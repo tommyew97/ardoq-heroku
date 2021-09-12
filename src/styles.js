@@ -157,6 +157,9 @@ export const Availability = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  .text {
+    color: ${(props) => props.secondary};
+  }
   .check {
     margin-top: 10px;
     width: 20px;

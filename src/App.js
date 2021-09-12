@@ -97,8 +97,8 @@ function App() {
           <span className="slider round"></span>
         </label>
       </Toggle>
-      <Availability>
-        <span>Ledige sykler?</span>
+      <Availability secondary={secondaryColor}>
+        <span className="text">Ledige sykler?</span>
         <input
           className="check"
           type="checkbox"
