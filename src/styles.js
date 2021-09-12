@@ -7,14 +7,17 @@ export const Container = styled.div`
 
 export const Header = styled.div`
   width: 100%;
-  height: 250px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
   .header-text {
     color: ${(props) => props.secondary};
-    font-size: 80px;
+    font-size: 70px;
     font-family: "Roboto", sans-serif;
+    @media (max-width: 900px) {
+      font-size: 50px;
+    }
   }
 `;
 
@@ -37,6 +40,9 @@ export const SearchBarContainer = styled.div`
     box-shadow: rgb(0 0 0 / 40%) 10px 10px 20px, rgb(0 0 0 / 45%) 5px 10px 5px;
     background-color: ${(props) => props.primary};
     color: ${(props) => props.secondary};
+    @media (max-width: 900px) {
+      width: 300px;
+    }
   }
   .searchbar:focus {
     outline: none;
@@ -51,8 +57,8 @@ export const DataContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
-    width: 300px;
-    height: 320px;
+    width: 250px;
+    height: 270px;
     padding: 20px;
     margin: 40px;
     border-style: solid;
@@ -60,7 +66,7 @@ export const DataContainer = styled.div`
     border-radius: 10px;
     border-color: ${(props) =>
       props.primary == "#fafafa" ? "#303030" : "#808080"};
-    font-size: 22px;
+    font-size: 20px;
     background-color: ${(props) => props.primary};
     box-shadow: rgba(0, 0, 0, 0.4) 0px 10px 20px,
       rgba(0, 0, 0, 0.45) 0px 6px 6px;
@@ -75,7 +81,7 @@ export const DataContainer = styled.div`
 export const Toggle = styled.div`
   position: absolute;
   right: 3vw;
-  top: 255px;
+  top: 205px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -141,5 +147,20 @@ export const Toggle = styled.div`
 
   .slider.round:before {
     border-radius: 50%;
+  }
+`;
+
+export const Availability = styled.div`
+  position: absolute;
+  top: 205px;
+  left: 3vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .check {
+    margin-top: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
   }
 `;

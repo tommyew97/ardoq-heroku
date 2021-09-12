@@ -5,6 +5,7 @@ import {
   Header,
   SearchBarContainer,
   Toggle,
+  Availability,
 } from "./styles";
 import { fetchStations, fetchStationStatus } from "./api";
 
@@ -48,9 +49,9 @@ function App() {
               <br />
               <span>Kapasitet: {station.capacity} </span>
               <br />
-              <span>Ledige plasser: {station.num_bikes_available} </span>
+              <span>Ledige plasser: {station.num_docks_available} </span>
               <br />
-              <span>Ledige sykler: {station.num_docks_available}</span>
+              <span>Ledige sykler: {station.num_bikes_available}</span>
             </div>
           ))}
         </DataContainer>
@@ -72,6 +73,18 @@ function App() {
     setSecondaryColor(temp);
   };
 
+  const toggleAvailable = (availability) => {
+    let filteredData = [];
+    if (availability) {
+      filteredData = filteredStations.filter(
+        (el) => el.num_bikes_available > 0
+      );
+      setFilteredStations(filteredData);
+    } else {
+      filterData(document.getElementById("search").value);
+    }
+  };
+
   return (
     <Container primary={primaryColor} secondary={secondaryColor}>
       <Header primary={primaryColor} secondary={secondaryColor}>
@@ -84,8 +97,17 @@ function App() {
           <span className="slider round"></span>
         </label>
       </Toggle>
+      <Availability>
+        <span>Ledige sykler?</span>
+        <input
+          className="check"
+          type="checkbox"
+          onChange={(event) => toggleAvailable(event.target.checked)}
+        />
+      </Availability>
       <SearchBarContainer primary={primaryColor} secondary={secondaryColor}>
         <input
+          id="search"
           className="searchbar"
           placeholder="Søk på stasjon..."
           onChange={(event) => filterData(event.target.value)}
